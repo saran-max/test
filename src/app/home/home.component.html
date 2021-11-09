@@ -1,0 +1,30 @@
+<div class="container-fluid pt-5">
+  <div class="col-md-4 offset-md-4 col-sm-8 offset-sm-2 col-xs-12 restarant-input px-5 pt-3 pb-5">
+    <h4>Restatant</h4>
+    <input type="text" class="form-control" [(ngModel)]="restarantObj.name" placeholder="enter restarant name ... " />
+
+    <div class="d-flex">
+      <div class="w-50">
+        <input type="file" multiple accept="image/*" #files style="display: none;" (change)="getFileDetails($event)">
+        <div class="p-2 mt-3 mr-2 btns" (click)="files.click()">
+         <label for="files"></label> Choose
+        </div>
+      </div>
+      <div class="w-50">
+        <div class="p-2 mt-3 ml-2 btns">
+          Upload
+        </div>
+      </div>
+    </div>
+
+    <div *ngFor="let img of this.restarantObj.images;let i = index" class="mt-3">
+        <img [src]="img.base64" height="50" width="50"/> 
+        <label class="pl-3" (click)="removeImage(i)" style="cursor: pointer;">Remove</label>
+    </div>
+
+    <div class="mt-4 qr-code p-2">
+        Generate QR Code
+    </div>
+
+  </div>
+</div>
